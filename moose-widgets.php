@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Moose Widgets
  * Description: A lightweight, extensible collection of premium Elementor widgets.
- * Version: 1.1.11
+ * Version: 1.1.12
  * Author: m00s3c
  * Author URI: https://moose.sh
  * Text Domain: moose-widgets
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MOOSE_WIDGETS_VERSION', '1.1.11' );
+define( 'MOOSE_WIDGETS_VERSION', '1.1.12' );
 define( 'MOOSE_WIDGETS_FILE', __FILE__ );
 define( 'MOOSE_WIDGETS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MOOSE_WIDGETS_URL', plugin_dir_url( __FILE__ ) );

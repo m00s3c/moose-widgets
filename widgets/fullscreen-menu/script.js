@@ -36,6 +36,7 @@
 			window.clearTimeout(this.hideTimer);
 			this.lastFocus = document.activeElement;
 			this.overlay.hidden = false;
+			this.overlay.scrollTop = 0;
 			// Commit the natively hidden state before starting the transition.
 			this.overlay.getBoundingClientRect();
 			this.overlay.setAttribute('aria-hidden', 'false');

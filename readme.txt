@@ -4,7 +4,7 @@ Tags: elementor, widgets, fullscreen menu, navigation
 Requires at least: 6.2
 Tested up to: 6.6
 Requires PHP: 8.0
-Stable tag: 1.1.11
+Stable tag: 1.1.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,11 @@ Moose Widgets adds a dedicated Elementor category and automatically discovers wi
 3. Edit a page with Elementor and find Fullscreen Menu under Moose Widgets.
 
 == Changelog ==
+
+= 1.1.12 =
+* Fix incomplete touch scrolling in long Fullscreen Menus on mobile.
+* Use the dynamic mobile viewport height and account for device safe areas.
+* Restore momentum scrolling and reset the menu to the top whenever it opens.
 
 = 1.1.11 =
 * Prevent the Fullscreen Menu overlay from flashing before its stylesheet loads.

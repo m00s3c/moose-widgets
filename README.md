@@ -22,7 +22,7 @@ A live-results search bar that submits to native WordPress search. It has dropdo
 
 ## Installation
 
-1. Download this repository as a ZIP, or clone it into `wp-content/plugins/moose-widgets`.
+1. Download the latest upload-ready ZIP (`moose-widgets-<version>.zip`) from the [Releases](../../releases) page, or clone this repository into `wp-content/plugins/moose-widgets`.
 2. Activate **Moose Widgets** in WordPress.
 3. In Elementor, find the widgets under the **Moose Widgets** category.
 
