@@ -1,0 +1,283 @@
+/** Moose Widgets: AJAX Search */
+.mw-ajax-search {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	width: 100%;
+	font-family: inherit;
+}
+
+.mw-ajax-search__trigger {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin: 0;
+	padding: 10px;
+	border: 0;
+	background: transparent;
+	color: #1d2330;
+	font: inherit;
+	line-height: 1;
+	cursor: pointer;
+	transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.mw-ajax-search__trigger-icon,
+.mw-ajax-search__trigger-icon svg {
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+
+.mw-ajax-search__trigger:focus-visible,
+.mw-ajax-search__submit:focus-visible,
+.mw-ajax-search__result-link:focus-visible,
+.mw-ajax-search__view-all:focus-visible {
+	outline: 3px solid currentColor;
+	outline-offset: 3px;
+}
+
+.mw-ajax-search__panel {
+	z-index: 9999;
+	box-sizing: border-box;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 10px 28px rgba(22, 28, 45, .1);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translate3d(0, -5px, 0);
+	transition: opacity 180ms ease, transform 220ms cubic-bezier(.22, 1, .36, 1), visibility 0s linear 220ms;
+}
+
+.mw-ajax-search__panel[hidden] {
+	display: none !important;
+}
+
+.mw-ajax-search--dropdown .mw-ajax-search__panel {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	width: 520px;
+	max-width: calc(100vw - 24px);
+}
+
+.mw-ajax-search--inline .mw-ajax-search__panel {
+	position: relative;
+	width: 100%;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: none;
+}
+
+.mw-ajax-search.is-open .mw-ajax-search__panel,
+.mw-ajax-search__panel.is-open {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: none;
+	transition-delay: 0s;
+}
+
+.mw-ajax-search__panel-inner {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 520px;
+	margin-inline: auto;
+	padding: 10px 16px;
+}
+
+/*
+ * Expanding-bar mode is moved beside the Elementor header/container row by
+ * JavaScript. This host participates in normal document flow, so opening the
+ * bar creates a real row and pushes the page down instead of overlapping it.
+ */
+.mw-ajax-search__bar-host {
+	position: relative;
+	z-index: 9998;
+	display: none !important;
+	flex: 0 0 100%;
+	width: 100%;
+	max-width: none;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.mw-ajax-search__bar-host.is-open {
+	display: block !important;
+}
+
+.mw-ajax-search__bar-host .mw-ajax-search__panel {
+	position: relative;
+	left: 50%;
+	display: block;
+	width: 100vw;
+	height: 0;
+	max-width: 100vw;
+	margin: 0 0 0 -50vw;
+	border: 0;
+	border-top: 1px solid #e7e9ef;
+	border-bottom: 1px solid #e7e9ef;
+	border-radius: 0;
+	box-shadow: none;
+	overflow: hidden;
+	transform: none;
+	contain: paint;
+	transition: height 240ms cubic-bezier(.22, 1, .36, 1), opacity 160ms ease, visibility 0s linear 240ms;
+}
+
+.mw-ajax-search__bar-host .mw-ajax-search__panel.is-open {
+	height: var(--mw-search-panel-height, 60px);
+	transition-delay: 0s;
+}
+
+.mw-ajax-search__bar-host .mw-ajax-search__panel-inner {
+	min-height: 0;
+	overflow: hidden;
+}
+
+.mw-ajax-search__form {
+	display: flex;
+	align-items: stretch;
+	gap: 8px;
+	width: 100%;
+}
+
+.mw-ajax-search__input {
+	-webkit-appearance: none;
+	appearance: none;
+	box-sizing: border-box;
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 40px;
+	margin: 0;
+	padding: 7px 11px;
+	border: 1px solid #d8dce5;
+	border-radius: 3px;
+	background: #fff;
+	color: #1d2330;
+	font: inherit;
+	line-height: 1.3;
+	outline: 0;
+	transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.mw-ajax-search__input:focus {
+	border-color: #2563eb;
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, .16);
+}
+
+.mw-ajax-search__input::-webkit-search-cancel-button { cursor: pointer; }
+
+.mw-ajax-search__submit {
+	-webkit-appearance: none;
+	appearance: none;
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 40px;
+	margin: 0;
+	padding: 8px 13px;
+	border: 0;
+	border-radius: 3px;
+	background: #2563eb;
+	color: #fff;
+	font: inherit;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+	transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.mw-ajax-search__submit:hover { background: #1d4ed8; transform: translateY(-1px); }
+.mw-ajax-search__submit svg { display: block; width: 1em; height: 1em; }
+
+.mw-ajax-search__results {
+	margin-top: 9px;
+	border-top: 1px solid #e7e9ef;
+	padding-top: 9px;
+}
+
+.mw-ajax-search__results[hidden] { display: none !important; }
+
+.mw-ajax-search__results-list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.mw-ajax-search__result-link {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 7px;
+	border-radius: 6px;
+	background: #fff;
+	text-decoration: none;
+	transition: background-color 160ms ease;
+}
+
+.mw-ajax-search__result-link:hover { background: #f4f5fa; }
+
+.mw-ajax-search__result-image {
+	flex: 0 0 auto;
+	width: 52px;
+	height: 52px;
+	border-radius: 4px;
+	object-fit: cover;
+}
+
+.mw-ajax-search__result-content { min-width: 0; }
+.mw-ajax-search__result-title { margin: 0; color: #1d2330; font-size: 14px; font-weight: 650; line-height: 1.35; }
+.mw-ajax-search__result-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; color: #7a8291; font-size: 12px; line-height: 1.3; }
+.mw-ajax-search__result-excerpt { margin: 5px 0 0; color: #7a8291; font-size: 13px; line-height: 1.4; }
+.mw-ajax-search__status { margin: 0; padding: 12px 8px; color: #7a8291; text-align: center; }
+
+.mw-ajax-search__spinner {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	vertical-align: -4px;
+	animation: mw-ajax-search-spin .65s linear infinite;
+}
+
+.mw-ajax-search__view-all {
+	display: block;
+	margin-top: 10px;
+	padding: 10px;
+	color: #2563eb;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+}
+
+@keyframes mw-ajax-search-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 767px) {
+	.mw-ajax-search__form { flex-wrap: wrap; }
+	.mw-ajax-search__input { flex-basis: calc(100% - 60px); }
+	.mw-ajax-search__submit span:last-child:not(:first-child) { display: none; }
+	.mw-ajax-search__panel-inner { padding: 8px 12px; }
+	.mw-ajax-search__result-image { width: 52px; height: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mw-ajax-search__panel,
+	.mw-ajax-search__trigger,
+	.mw-ajax-search__submit { transition-duration: 1ms !important; }
+}
