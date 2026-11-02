@@ -1,10 +1,10 @@
 === Moose Widgets ===
-Contributors: m00s3c
+Contributors: webmaster.sh
 Tags: elementor, widgets, fullscreen menu, navigation
 Requires at least: 6.2
 Tested up to: 6.6
 Requires PHP: 8.0
-Stable tag: 1.1.12
+Stable tag: 1.1.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,13 +14,18 @@ A lightweight, extensible library of high-quality Elementor widgets.
 
 Moose Widgets adds a dedicated Elementor category and automatically discovers widgets placed in the widgets directory. It includes a polished Fullscreen Menu and a customizable AJAX Search widget.
 
+Created by [webmaster.sh](https://webmaster.sh).
+
 == Installation ==
 
 1. Upload the `moose-widgets` directory to `/wp-content/plugins/` or install its ZIP from Plugins > Add New.
 2. Activate Moose Widgets.
-3. Edit a page with Elementor and find Fullscreen Menu under Moose Widgets.
+3. Edit a page with Elementor and find Fullscreen Menu and AJAX Search under Moose Widgets.
 
 == Changelog ==
+
+= 1.1.13 =
+* Updated author to webmaster.sh and refreshed readme.
 
 = 1.1.12 =
 * Fix incomplete touch scrolling in long Fullscreen Menus on mobile.
@@ -52,7 +57,7 @@ Moose Widgets adds a dedicated Elementor category and automatically discovers wi
 * Preserve the closing animation before releasing its reserved layout space.
 
 = 1.1.6 =
-* Update plugin author metadata to m00s3c and moose.sh.
+* Update plugin author metadata.
 
 = 1.1.5 =
 * Make the AJAX Search submit button optional while retaining Enter-key submission.
