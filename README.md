@@ -26,6 +26,10 @@ A live-results search bar that submits to native WordPress search. It has dropdo
 2. Activate **Moose Widgets** in WordPress.
 3. In Elementor, find the widgets under the **Moose Widgets** category.
 
+## Author
+
+[webmaster.sh](https://webmaster.sh)
+
 ## Changelog
 
 See [`readme.txt`](readme.txt).
